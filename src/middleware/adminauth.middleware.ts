@@ -9,6 +9,7 @@ export class AdminauthMiddleware implements NestMiddleware {
     // 1、获取session里面保存的用户信息
     const userInfo = req.session.userinfo;
     if (userInfo && userInfo.username) {
+      res.locals.userinfo = userinfo;
       next();
     } else {
       // 排除不需要做权限跳转的页面
@@ -17,6 +18,7 @@ export class AdminauthMiddleware implements NestMiddleware {
         pathname == '/admin/login/code' ||
         pathname == '/admin/login/doLogin'
       ) {
+        //设置全局变量
         next();
       } else {
         res.redirect('/admin/login');

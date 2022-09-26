@@ -6,8 +6,19 @@ import { ApiModule } from './module/api/api.module';
 import { DefaultModule } from './module/default/default.module';
 import { ToolsService } from './service/tools/tools.service';
 import { AdminauthMiddleware } from './middleware/adminauth.middleware';
+import { MongooseModule } from '@nestjs/mongoose';
 @Module({
-  imports: [AdminModule, ApiModule, DefaultModule],
+  imports: [
+    AdminModule,
+    ApiModule,
+    DefaultModule,
+    MongooseModule.forRoot(
+      'mongodb://xiaomiadmin:123456@127.0.0.1:27017/nestxiaomi',
+      {
+        useNewUrlParser: true,
+      },
+    ),
+  ],
   controllers: [AppController],
   providers: [AppService, ToolsService],
 })

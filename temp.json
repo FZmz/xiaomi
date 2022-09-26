@@ -1,0 +1,52 @@
+{
+  "_id": "admin.admin",
+  "userId": UUID("223188d2-c8b7-43b2-9e9b-b02a37883e33"),
+  "user": "admin",
+  "db": "admin",
+  "credentials": {
+    "SCRAM-SHA-1": {
+      "iterationCount": 10000,
+      "salt": "4LgUuXO8VIYRhUMDFF2pHg==",
+      "storedKey": "ETVEmNd2u9S2eN1aGDzeryn5+iQ=",
+      "serverKey": "tyipLCKkeP6a5Hk7qTPr+GGdntI="
+    },
+    "SCRAM-SHA-256": {
+      "iterationCount": 15000,
+      "salt": "gu/OFPZzSWxoBW0APvEdMrRHg6R9//NcVCnQVw==",
+      "storedKey": "0tXkgEIwQFKnVZxtydalzKo6gVKx9g8eUsIVtL4smUk=",
+      "serverKey": "LK6egLv606d73L81Ra/X6VgR+siyP5jXYInZrjQDzX8="
+    }
+  },
+  "roles": [
+    {
+      "role": "root",
+      "db": "admin"
+    }
+  ]
+},
+{
+  "_id": "eggcms.eggadmin",
+  "userId": UUID("4c610fa8-50a6-4d9e-a73e-bf1bc362fad3"),
+  "user": "eggadmin",
+  "db": "eggcms",
+  "credentials": {
+    "SCRAM-SHA-1": {
+      "iterationCount": 10000,
+      "salt": "9PBTd13LSA2buaF+6ofQlw==",
+      "storedKey": "JRS8ZWqXi7d/SUDZ2+U/R/J9NRA=",
+      "serverKey": "jXaXNb+YZyo/IuO9ii0CTYOq1KY="
+    },
+    "SCRAM-SHA-256": {
+      "iterationCount": 15000,
+      "salt": "NkhINLLU3YNMRlTpnCIZke149DD/h1UEynDi9w==",
+      "storedKey": "+2iEbe57JQ2oXryBcxfnKk12BsHHchF9/ODNyU8Mok0=",
+      "serverKey": "V2ZGALNQ/CDy+beNWIZukn9yGRv7yoNfKMCb+ROqH9g="
+    }
+  },
+  "roles": [
+    {
+      "role": "dbOwner",
+      "db": "eggcms"
+    }
+  ]
+}

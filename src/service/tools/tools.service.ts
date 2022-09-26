@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 // 引入验证码库
 import * as svgCaptcha from 'svg-captcha';
+import * as md5 from 'md5';
 @Injectable()
 export class ToolsService {
   //生成验证码
@@ -13,5 +14,20 @@ export class ToolsService {
       background: '#cc9966',
     });
     return captcha;
+  }
+  // md5加密
+  getMd5(str: string) {
+    return md5(str);
+  }
+  async success(res, redirectUrl) {
+    await res.render('admin/public/success', {
+      redirectUrl: redirectUrl,
+    });
+  }
+  async error(res, message, redirectUrl) {
+    await res.render('admin/public/error', {
+      message: message,
+      redirectUrl: redirectUrl,
+    });
   }
 }

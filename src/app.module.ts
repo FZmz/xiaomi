@@ -7,6 +7,8 @@ import { DefaultModule } from './module/default/default.module';
 import { ToolsService } from './service/tools/tools.service';
 import { AdminauthMiddleware } from './middleware/adminauth.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
+import { InitMiddleware } from './middleware/init.middleware';
+import { Config } from './config/config';
 @Module({
   imports: [
     AdminModule,
@@ -24,6 +26,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AdminauthMiddleware).forRoutes('admin/*');
+    consumer
+      .apply(AdminauthMiddleware)
+      .forRoutes(`${Config.adminPath}/*`)
+      .apply(InitMiddleware)
+      .forRoutes('*');
   }
 }

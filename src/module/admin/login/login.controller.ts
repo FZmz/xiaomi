@@ -9,7 +9,8 @@ import {
 } from '@nestjs/common';
 import { ToolsService } from 'src/service/tools/tools.service';
 import { AdminService } from 'src/service/admin/admin.service';
-@Controller('admin/login')
+import { Config } from 'src/config/config';
+@Controller(`${Config.adminPath}/login`)
 export class LoginController {
   constructor(
     private toolsService: ToolsService,
@@ -50,32 +51,32 @@ export class LoginController {
             req.session.userinfo = userResult[0];
             console.log(req.session.userinfo);
             await res.render('admin/public/success', {
-              redirectUrl: '/admin/main',
+              redirectUrl: `/${Config.adminPath}/main`,
             });
           } else {
             console.log('用户名或者密码不正确');
             await res.render('admin/public/error', {
               message: '用户名或者密码不正确',
-              redirectUrl: '/admin/login',
+              redirectUrl: `/${Config.adminPath}/login`,
             });
           }
         } else {
           await res.render('admin/public/error', {
             message: '用户不存在',
-            redirectUrl: '/admin/login',
+            redirectUrl: `/${Config.adminPath}/login/doLogin`,
           });
         }
       }
     } catch (err) {
       await res.render('admin/public/error', {
         message: '验证码不正确',
-        redirectUrl: '/admin/login',
+        redirectUrl: `/${Config.adminPath}/login`,
       });
     }
   }
   @Get('loginOut')
   loginOut(@Request() req, @Response() res) {
     req.session.userinfo = null;
-    res.redirect('/admin/login');
+    res.redirect(`/${Config.adminPath}/login`);
   }
 }

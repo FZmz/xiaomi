@@ -6,6 +6,7 @@ var app = {
   init: function () {
     this.slideToggle();
     this.resizeIframe();
+    this.confirmDelete();
   },
   resizeIframe: function () {
     //1、获取浏览器的高度

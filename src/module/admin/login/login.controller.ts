@@ -49,7 +49,6 @@ export class LoginController {
           if (userResult.length > 0) {
             console.log('登陆成功！');
             req.session.userinfo = userResult[0];
-            console.log(req.session.userinfo);
             await res.render('admin/public/success', {
               redirectUrl: `/${Config.adminPath}/main`,
             });
